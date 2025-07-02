@@ -1,6 +1,6 @@
 import CONST from '../game_variables';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import CookiePicture from '../cookie.webp'
 
@@ -21,13 +21,13 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
     image.style.transform = `scale(${scale}, ${scale})`
   }
 
+  useEffect(transformImage, [scale])
+
   function onClick() {
     setClicks(1 + multiplier(clicks))
     eventHandle(Events.CLICKED, clicks, maxClicks)
 
     setScale(scale - 0.6 / maxClicks)
-    console.log("scale: ", scale)
-    console.log("steps: ", 0.6 / 10)
 
     if (maxClicks - clicks <= 1) {
       eventHandle(Events.DESTROYED, clicks, maxClicks)
@@ -38,8 +38,6 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
 
       setScale(1 + cookiesDestroyed * 0.05)
     }
-
-    transformImage()
   }
 
 
