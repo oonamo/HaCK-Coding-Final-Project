@@ -21,15 +21,8 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
     image.style.transform = `scale(${scale}, ${scale})`
   }
 
-  useEffect(transformImage, [scale])
-
-  function onClick() {
-    setClicks(1 + multiplier(clicks))
-    eventHandle(Events.CLICKED, clicks, maxClicks)
-
-    setScale(scale - 0.6 / maxClicks)
-
-    if (maxClicks - clicks <= 1) {
+  function reset() {
+    if (maxClicks - clicks <= 0) {
       eventHandle(Events.DESTROYED, clicks, maxClicks)
       setClicks(0)
 
@@ -38,6 +31,17 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
 
       setScale(1 + cookiesDestroyed * 0.05)
     }
+  }
+
+  useEffect(transformImage, [scale])
+  useEffect(reset, [clicks])
+
+  function onClick() {
+    setClicks(clicks + multiplier(clicks))
+    eventHandle(Events.CLICKED, clicks, maxClicks)
+
+    setScale(scale - 0.6 / maxClicks)
+
   }
 
 
