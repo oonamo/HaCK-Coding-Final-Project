@@ -5,4 +5,13 @@
 .cookie {
   width: 4em;
   height: 4em;
+  display: block;
+  margin: auto;
+}
+
+.cookie-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
