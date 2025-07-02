@@ -2,6 +2,8 @@ import CONST from '../game_variables';
 
 import { useState } from 'react';
 
+import CookiePicture from '../cookie.webp'
+
 export const Events = Object.freeze({
   DESTROYED: 1,
   CLICKED: 2,
@@ -26,7 +28,8 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
   return (
     <div className="main-cookie">
       {/* Should be an image */}
-      <button onClick={onClick} className="cookie-btn">Cookie</button>
+      <img src={CookiePicture} onClick={onClick} className="cookie" />
+      {/* <button onClick={onClick} className="cookie-btn">Cookie</button> */}
       <p className="clicks-remaining">{maxClicks - clicks}</p>
     </div>
   )

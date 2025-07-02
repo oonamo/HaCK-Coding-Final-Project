@@ -25,7 +25,6 @@ function App() {
   function cookieEventHandle(event, clicks, maxClicks) {
     switch (event) {
       case Events.CLICKED: {
-        console.log("clicked")
         break
       }
       case Events.DESTROYED: {
