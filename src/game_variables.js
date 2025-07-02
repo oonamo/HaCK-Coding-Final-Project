@@ -1,0 +1,5 @@
+export default {
+  STARTING_CLICKS: 10,
+  DEFAULT_MULTIPLIER: 1,
+  SCALING_MULTIPLIER: 0.8,
+}
