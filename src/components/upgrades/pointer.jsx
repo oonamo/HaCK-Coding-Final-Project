@@ -14,7 +14,7 @@ export default function Pointer({ money, onPurchase }) {
       setAmount(amount + 1);
       onPurchase(COST, GAIN);
 
-      setCost(cost * (1 + SCALING_COST))
+      setCost(Math.floor(cost * (1 + SCALING_COST)))
     }
   }
 
