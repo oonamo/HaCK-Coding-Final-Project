@@ -7,7 +7,8 @@ import Pointer from './components/upgrades/pointer';
 
 function App() {
   const [money, setMoney] = useState(0)
-  const [itemMultiplier, setItemMultiplier] = useState(1);
+  const [itemMultiplier, setItemMultiplier] = useState(1)
+  const [itemEffects, setItemEffects] = useState([])
 
   // Scaling for the amount of clicks needed to destroy a cookie
   function clickScaleFunc(maxClicks) {
@@ -19,7 +20,9 @@ function App() {
   function clickMultiplier(clicks) {
     const clickGain = itemMultiplier
 
-    console.log("itemMultiplier", itemMultiplier, "clicks", clicks);
+    for (const itemEffect of itemEffects) {
+      clickGain += itemEffect()
+    }
 
     return clickGain
   }
@@ -40,9 +43,13 @@ function App() {
     }
   }
 
-  function onItemPurchase(itemCost, multiplierGain) {
+  function onItemPurchase(itemCost, multiplierGain, itemEffect) {
     setMoney(money - itemCost);
     setItemMultiplier(itemMultiplier + multiplierGain);
+
+    if (typeof itemEffect == "function") {
+      setItemEffects([...itemEffects, itemEffect])
+    }
   }
 
   return (
