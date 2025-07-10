@@ -2,11 +2,11 @@ import ShopItem from '../shop_component';
 import { useState, useEffect } from 'react';
 import EventHandler from '../../events';
 
-const STARTING_COST = 10;
+const STARTING_COST = 100;
 const GAIN = 1;
-const SCALING_COST = 0.75;
+const SCALING_COST = 0.5;
 
-const STARTING_INTERVAL = 1000;
+const STARTING_INTERVAL = 1200;
 
 
 export default function AutoClicker({ money, onPurchase }) {
@@ -52,7 +52,7 @@ export default function AutoClicker({ money, onPurchase }) {
     <ShopItem
       name="autoclicker"
       cost={cost}
-      description="clicks for you every second, can stack"
+      description="Clicks for you automatically, combines with extra clicks"
       bought={amount}
       attemptPurchase={onClick}
     />
