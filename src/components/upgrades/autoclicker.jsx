@@ -19,11 +19,10 @@ export default function AutoClicker({ money, onPurchase }) {
     if (money >= cost) {
       setAmount(amount + 1);
       onPurchase(cost, GAIN);
-
       setCost(Math.floor(cost * (1 + SCALING_COST)))
 
-      // Do things to the interval here i.e
-      // setIntervalTime(interval * 0.8)
+      // Cuts the speed of interval to 3/4 previous
+      setIntervalTime(prev => Math.floor(prev*0.75))
     }
   }
 
@@ -31,6 +30,7 @@ export default function AutoClicker({ money, onPurchase }) {
     // Emits the 'click' event
     // see cookie.jsx
     // TODO: Should the amount of clicks increase?
+    // I think decreasing the interval alone will be good
     EventHandler.emit("click", "auto-clicker", GAIN)
   }
 
@@ -43,8 +43,10 @@ export default function AutoClicker({ money, onPurchase }) {
 
       let intervalID = setInterval(doAutoClick, interval)
       setLastID(intervalID)
+      //Clearing interval before speeding it up)
+      return () => clearInterval(intervalID);
     }
-  }, [amount])
+  }, [amount, interval])
 
   return (
     <ShopItem
