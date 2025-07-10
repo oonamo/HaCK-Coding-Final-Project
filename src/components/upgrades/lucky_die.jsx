@@ -5,10 +5,11 @@ const COST = 250;
 const GAIN = 0;
 const SCALING_COST = 4.5;
 
+import Proc from '../../proccer';
+
+// returns a random number from 1-6
 function rollDie(_) {
-  const result = Math.floor(Math.random() * 6) + 1
-  console.log("rolled a ", result)
-  return result
+  return Math.floor(Math.random() * 6) + 1
 }
 
 export default function Pointer({ money, onPurchase }) {
@@ -21,6 +22,7 @@ export default function Pointer({ money, onPurchase }) {
       onPurchase(COST, GAIN, rollDie);
 
       setCost(Math.floor(cost * (1 + SCALING_COST)))
+      Proc.addEffect(rollDie)
     }
   }
 
