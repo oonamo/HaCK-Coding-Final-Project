@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Events, Cookie } from './components/cookie';
 
 import Pointer from './components/upgrades/pointer';
+import AutoClicker from './components/upgrades/autoclicker';
 
 import EventHandler from './events';
 
@@ -39,6 +40,7 @@ function App() {
           <p className="money">{"Money: $" + money}</p>
           <div className="upgrade-bar">
             <Pointer money={money} onPurchase={onItemPurchase} />
+            <AutoClicker money={money} onPurchase={onItemPurchase} />
             { /* TODO: add upgrade bar */}
           </div>
         </div>
