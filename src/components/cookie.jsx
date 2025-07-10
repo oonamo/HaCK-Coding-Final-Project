@@ -2,7 +2,7 @@ import CONST from '../game_variables';
 
 import { useState, useEffect } from 'react';
 
-import CookiePicture from '../cookie.webp'
+import CookiePicture from '../bruin.png'
 
 import EventHandler from '../events';
 import Proc from '../proccer';
@@ -51,7 +51,7 @@ export function Cookie({ scaling }) {
   return (
     <div className="main-cookie">
       <img src={CookiePicture} onClick={onClick} className="cookie" />
-      <p className="clicks-remaining">{maxClicks - clicks}</p>
+      <p className="clicks-remaining">{"Clicks Remaining: " + (maxClicks - clicks)}</p>
     </div>
   )
 }

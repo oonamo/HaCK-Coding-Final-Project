@@ -35,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="main-title"> Bruin Basher</h1>
       <div className="game-canvas">
         <div className="info-area">
           <p className="money">{"Money: $" + money}</p>
