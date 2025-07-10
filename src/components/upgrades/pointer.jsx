@@ -14,7 +14,7 @@ export default function Pointer({ money, onPurchase }) {
   function onClick() {
     if (money >= COST) {
       setAmount(amount + 1);
-      onPurchase(COST, GAIN);
+      onPurchase(COST);
       setCost(Math.floor(cost * (1 + SCALING_COST)))
 
       // Add `GAIN` to the proc-chain

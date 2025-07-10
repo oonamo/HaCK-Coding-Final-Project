@@ -34,13 +34,8 @@ function App() {
     return Math.ceil(money + (maxClicks * 0.5))
   }
 
-  function onItemPurchase(itemCost, multiplierGain, itemEffect) {
+  function onItemPurchase(itemCost) {
     setMoney(money - itemCost);
-    // setItemMultiplier(itemMultiplier + multiplierGain);
-    //
-    // if (typeof itemEffect == "function") {
-    //   setItemEffects([...itemEffects, itemEffect])
-    // }
   }
 
   // Update destroy handle when money changes
