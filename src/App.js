@@ -9,25 +9,11 @@ import EventHandler from './events';
 
 function App() {
   const [money, setMoney] = useState(0)
-  const [itemMultiplier, setItemMultiplier] = useState(1)
-  const [itemEffects, setItemEffects] = useState([])
 
 
   // Scaling for the amount of clicks needed to destroy a cookie
   function clickScaleFunc(maxClicks) {
     return maxClicks * (1 + 0.1)
-  }
-
-  // Function for changing the amount a 'click' counts towards progress
-  // TODO: This function should be changed with upgrades
-  function clickMultiplier(clicks) {
-    // let clickGain = itemMultiplier
-    //
-    // for (const itemEffect of itemEffects) {
-    //   clickGain += itemEffect()
-    // }
-    //
-    // return clickGain
   }
 
   function moneyMultiplier(maxClicks) {
@@ -58,8 +44,7 @@ function App() {
         </div>
         <div className="cookie-area">
           <Cookie
-            scaling={clickScaleFunc}
-            multiplier={clickMultiplier} />
+            scaling={clickScaleFunc} />
         </div>
       </div>
     </div>
