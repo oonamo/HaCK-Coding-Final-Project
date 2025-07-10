@@ -1,7 +1,7 @@
 import ShopItem from '../shop_component';
 import { useState } from 'react';
 
-const COST = 250;
+const STARTING_COST = 250;
 const GAIN = 0;
 const SCALING_COST = 4.5;
 
@@ -14,13 +14,12 @@ function rollDie(_) {
 
 export default function Pointer({ money, onPurchase }) {
   const [amount, setAmount] = useState(0);
-  const [cost, setCost] = useState(COST);
+  const [cost, setCost] = useState(STARTING_COST);
 
   function onClick() {
-    if (money > COST) {
+    if (money > cost) {
       setAmount(amount + 1);
-      onPurchase(COST, GAIN, rollDie);
-
+      onPurchase(cost, GAIN, rollDie);
       setCost(Math.floor(cost * (1 + SCALING_COST)))
       Proc.addEffect(rollDie)
     }

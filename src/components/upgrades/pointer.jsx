@@ -3,18 +3,18 @@ import { useState, useEffect } from 'react';
 
 import Proc from '../../proccer';
 
-const COST = 5;
+const STARTING_COST = 5;
 const GAIN = 1;
 const SCALING_COST = 0.8;
 
 export default function Pointer({ money, onPurchase }) {
   const [amount, setAmount] = useState(0);
-  const [cost, setCost] = useState(COST);
+  const [cost, setCost] = useState(STARTING_COST);
 
   function onClick() {
-    if (money >= COST) {
+    if (money >= cost) {
       setAmount(amount + 1);
-      onPurchase(COST);
+      onPurchase(cost);
       setCost(Math.floor(cost * (1 + SCALING_COST)))
 
       // Add `GAIN` to the proc-chain
