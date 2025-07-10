@@ -14,7 +14,7 @@ class Proccer {
   proc() {
     let gain = 0;
     for (const item of this.items) {
-      gain = item()
+      gain += item()
     }
     return gain
   }
