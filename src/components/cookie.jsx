@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react';
 
 import CookiePicture from '../cookie.webp'
 
-export const Events = Object.freeze({
-  DESTROYED: 1,
-  CLICKED: 2,
-})
+import EventHandler from '../events';
+import Proc from '../proccer';
 
-export function Cookie({ scaling, multiplier, eventHandle }) {
+export function Cookie({ scaling }) {
   const [clicks, setClicks] = useState(0)
   const [maxClicks, setMaxClicks] = useState(CONST.STARTING_CLICKS)
   const [scale, setScale] = useState(1);
@@ -23,7 +21,7 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
 
   function reset() {
     if (maxClicks - clicks <= 0) {
-      eventHandle(Events.DESTROYED, clicks, maxClicks)
+      EventHandler.emit("destroy", "cookie-destroy", clicks, maxClicks)
       setClicks(0)
 
       setMaxClicks(Math.floor(scaling(maxClicks)))
@@ -34,15 +32,20 @@ export function Cookie({ scaling, multiplier, eventHandle }) {
   }
 
   useEffect(transformImage, [scale])
-  useEffect(reset, [clicks])
+  useEffect(() => {
+    reset()
+    console.log("clicks change")
+    EventHandler.subscribe("click", "cookie-click", (event, emitter, gain) => {
+      let procGain = Proc.proc()
+      setClicks(clicks + gain + procGain)
+    })
+  }, [clicks])
 
   function onClick() {
-    setClicks(clicks + multiplier(clicks))
-    eventHandle(Events.CLICKED, clicks, maxClicks)
-
+    EventHandler.emit("click", "cookie", 1)
     setScale(scale - 0.6 / maxClicks)
-
   }
+
 
 
   return (

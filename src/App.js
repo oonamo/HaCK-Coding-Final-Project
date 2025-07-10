@@ -1,56 +1,36 @@
 import './App.css';
 
-import { useState, } from 'react';
+import { useState, useEffect } from 'react';
 import { Events, Cookie } from './components/cookie';
 
 import Pointer from './components/upgrades/pointer';
 
+import EventHandler from './events';
+
 function App() {
   const [money, setMoney] = useState(0)
-  const [itemMultiplier, setItemMultiplier] = useState(1)
-  const [itemEffects, setItemEffects] = useState([])
+
 
   // Scaling for the amount of clicks needed to destroy a cookie
   function clickScaleFunc(maxClicks) {
     return maxClicks * (1 + 0.1)
   }
 
-  // Function for changing the amount a 'click' counts towards progress
-  // TODO: This function should be changed with upgrades
-  function clickMultiplier(clicks) {
-    const clickGain = itemMultiplier
-
-    for (const itemEffect of itemEffects) {
-      clickGain += itemEffect()
-    }
-
-    return clickGain
-  }
-
   function moneyMultiplier(maxClicks) {
     return Math.ceil(money + (maxClicks * 0.5))
   }
 
-  function cookieEventHandle(event, clicks, maxClicks) {
-    switch (event) {
-      case Events.CLICKED: {
-        break
-      }
-      case Events.DESTROYED: {
-        setMoney(moneyMultiplier(maxClicks))
-        break
-      }
-    }
-  }
-
-  function onItemPurchase(itemCost, multiplierGain, itemEffect) {
+  function onItemPurchase(itemCost) {
     setMoney(money - itemCost);
-    setItemMultiplier(itemMultiplier + multiplierGain);
-
-    if (typeof itemEffect == "function") {
-      setItemEffects([...itemEffects, itemEffect])
-    }
   }
+
+  // Update destroy handle when money changes
+  useEffect(() => {
+    EventHandler.subscribe("destroy", "money-handler", (event, emitter, clicks, maxClicks) => {
+      const mny = moneyMultiplier(maxClicks)
+      setMoney(mny)
+    })
+  }, [money])
 
   return (
     <div className="App">
@@ -64,9 +44,7 @@ function App() {
         </div>
         <div className="cookie-area">
           <Cookie
-            scaling={clickScaleFunc}
-            multiplier={clickMultiplier}
-            eventHandle={cookieEventHandle} />
+            scaling={clickScaleFunc} />
         </div>
       </div>
     </div>
