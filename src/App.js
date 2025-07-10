@@ -21,13 +21,13 @@ function App() {
   // Function for changing the amount a 'click' counts towards progress
   // TODO: This function should be changed with upgrades
   function clickMultiplier(clicks) {
-    let clickGain = itemMultiplier
-
-    for (const itemEffect of itemEffects) {
-      clickGain += itemEffect()
-    }
-
-    return clickGain
+    // let clickGain = itemMultiplier
+    //
+    // for (const itemEffect of itemEffects) {
+    //   clickGain += itemEffect()
+    // }
+    //
+    // return clickGain
   }
 
   function moneyMultiplier(maxClicks) {
@@ -36,16 +36,16 @@ function App() {
 
   function onItemPurchase(itemCost, multiplierGain, itemEffect) {
     setMoney(money - itemCost);
-    setItemMultiplier(itemMultiplier + multiplierGain);
-
-    if (typeof itemEffect == "function") {
-      setItemEffects([...itemEffects, itemEffect])
-    }
+    // setItemMultiplier(itemMultiplier + multiplierGain);
+    //
+    // if (typeof itemEffect == "function") {
+    //   setItemEffects([...itemEffects, itemEffect])
+    // }
   }
 
   // Update destroy handle when money changes
   useEffect(() => {
-    EventHandler.subscribe("destroy", "money-handler", (event, name, clicks, maxClicks) => {
+    EventHandler.subscribe("destroy", "money-handler", (event, emitter, clicks, maxClicks) => {
       const mny = moneyMultiplier(maxClicks)
       setMoney(mny)
     })
