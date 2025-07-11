@@ -2,6 +2,8 @@ import ShopItem from '../shop_component';
 import { useState } from 'react';
 import Proc from '../../proccer';
 
+import LuckyDieImage from '../../luckydie_picture.png'
+
 const STARTING_COST = 250;
 const GAIN = 0;
 const SCALING_COST = 4.5;
@@ -32,6 +34,7 @@ export default function Pointer({ money, onPurchase }) {
       description="Test your luck, number rolled is added onto your clicks"
       bought={amount}
       attemptPurchase={onClick}
+      image={LuckyDieImage}
     />
   )
 }
