@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Events, Cookie } from './components/cookie';
+import { Events, Bruin } from './components/bruin';
 
 import LuckyDie from './components/upgrades/lucky_die';
 import Pointer from './components/upgrades/pointer';
@@ -14,7 +14,7 @@ function App() {
   const [money, setMoney] = useState(0)
 
 
-  // Scaling for the amount of clicks needed to destroy a cookie
+  // Scaling for the amount of clicks needed to destroy a bruin
   function clickScaleFunc(maxClicks) {
     return maxClicks * (1 + 0.1)
   }
@@ -50,8 +50,8 @@ function App() {
             { /* TODO: add upgrade bar */}
           </div>
         </div>
-        <div className="cookie-area">
-          <Cookie
+        <div className="bruin-area">
+          <Bruin
             scaling={clickScaleFunc} />
         </div>
       </div>

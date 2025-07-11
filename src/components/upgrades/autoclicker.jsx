@@ -48,7 +48,7 @@ export default function AutoClicker({ money, onPurchase }) {
 
       let intervalID = setInterval(doAutoClick, interval)
       setLastID(intervalID)
-      //Clearing interval before speeding it up)
+      //Clearing interval before speeding it up
       return () => clearInterval(intervalID);
     }
   }, [amount, interval])
