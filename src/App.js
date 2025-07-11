@@ -1,15 +1,16 @@
-import './App.css';
-
 import { useState, useEffect } from 'react';
 import { Events, Cookie } from './components/cookie';
 
+import LuckyDie from './components/upgrades/lucky_die';
 import Pointer from './components/upgrades/pointer';
 import AutoClicker from './components/upgrades/autoclicker';
 
 import EventHandler from './events';
 
+import './App.css';
+
 function App() {
-  const [money, setMoney] = useState(0)
+  const [money, setMoney] = useState(250)
 
 
   // Scaling for the amount of clicks needed to destroy a cookie
@@ -41,6 +42,7 @@ function App() {
           <div className="upgrade-bar">
             <Pointer money={money} onPurchase={onItemPurchase} />
             <AutoClicker money={money} onPurchase={onItemPurchase} />
+            <LuckyDie money={money} onPurchase={onItemPurchase} />
             { /* TODO: add upgrade bar */}
           </div>
         </div>
