@@ -29,7 +29,7 @@ export default function Pointer({ money, onPurchase }) {
     <ShopItem
       name="luckydie"
       cost={cost}
-      description="Test your luck"
+      description="Test your luck, number rolled is added onto your clicks"
       bought={amount}
       attemptPurchase={onClick}
     />

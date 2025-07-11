@@ -10,7 +10,7 @@ import EventHandler from './events';
 import './App.css';
 
 function App() {
-  const [money, setMoney] = useState(250)
+  const [money, setMoney] = useState(0)
 
 
   // Scaling for the amount of clicks needed to destroy a cookie
