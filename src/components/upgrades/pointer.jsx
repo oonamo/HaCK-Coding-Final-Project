@@ -28,7 +28,7 @@ export default function Pointer({ money, onPurchase }) {
     <ShopItem
       name="pointer"
       cost={cost}
-      description="counts as an extra click"
+      description="Counts as an extra click."
       bought={amount}
       attemptPurchase={onClick}
       image={PointerImage}

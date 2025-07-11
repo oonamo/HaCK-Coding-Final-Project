@@ -53,7 +53,7 @@ export default function AutoClicker({ money, onPurchase }) {
     <ShopItem
       name="autoclicker"
       cost={cost}
-      description="clicks for you every second, can stack"
+      description="Clicks for you every second. (Stackable)"
       bought={amount}
       attemptPurchase={onClick}
       image={AutoClickerImage}
