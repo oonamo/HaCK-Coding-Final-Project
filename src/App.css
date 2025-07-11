@@ -6,6 +6,7 @@ body, html {
   color: #003366;         
 }
 
+
 .App {
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@ body, html {
   align-items: center;
   padding: 20px;
 }
+
 
 .main-title {
   font-size: 60px;
@@ -24,6 +26,7 @@ body, html {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
   user-select: none;
 }
+
 
 .game-canvas {
   background-color: #fdfdfd;
@@ -36,12 +39,14 @@ body, html {
   gap: 40px;
 }
 
+
 .info-area {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 
 .money {
   font-size: 24px;
@@ -53,11 +58,13 @@ body, html {
   width: fit-content;
 }
 
+
 .upgrade-bar {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
+
 
 .upgrade-bar > * {
   background: #ffffff;
@@ -67,12 +74,14 @@ body, html {
   transition: all 0.2s ease;
 }
 
+
 .upgrade-bar > *:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.cookie {
+
+.bruin {
   width: 7em;
   height: 7em;
   max-width: 110px;
@@ -81,7 +90,8 @@ body, html {
   margin: auto;
 }
 
-.cookie-area {
+
+.bruin-area {
   flex: 1;
   position: relative;        
   display: flex;
@@ -122,12 +132,14 @@ body, html {
   margin-bottom: 16px;
 }
 
+
 .item-image {
   width: 100px;
   height: 100px;
   object-fit: contain;
   border-radius: 8px;
 }
+
 
 .item-image.placeholder {
   display: flex;
@@ -137,9 +149,11 @@ body, html {
   color: #999;
 }
 
+
 .item-info {
   flex: 1;
 }
+
 
 .item-bought-amount {
   font-size: 24px;
@@ -149,10 +163,12 @@ body, html {
   margin-bottom: 6px;
 }
 
+
 .item-description {
   font-size: 14px;
   color: #333;
 }
+
 
 .item-buy-button {
   background-color: #28a745;
@@ -165,6 +181,7 @@ body, html {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 
 .item-buy-button:hover {
   background-color: #218838;

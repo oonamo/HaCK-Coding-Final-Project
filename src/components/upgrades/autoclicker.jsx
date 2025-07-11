@@ -44,7 +44,7 @@ export default function AutoClicker({ money, onPurchase }) {
 
       let intervalID = setInterval(doAutoClick, interval)
       setLastID(intervalID)
-      //Clearing interval before speeding it up)
+      //Clearing interval before speeding it up
       return () => clearInterval(intervalID);
     }
   }, [amount, interval])
@@ -53,7 +53,7 @@ export default function AutoClicker({ money, onPurchase }) {
     <ShopItem
       name="autoclicker"
       cost={cost}
-      description="Clicks for you every second. (Stackable)"
+      description="Clicks for you every second (Stackable)"
       bought={amount}
       attemptPurchase={onClick}
       image={AutoClickerImage}
