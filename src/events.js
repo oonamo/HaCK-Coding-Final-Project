@@ -46,6 +46,7 @@ const events = {
   click: new Event("click"),
   destroy: new Event("destroy"),
   purchase: new Event("purchase"),
+  message: new Event("message")
 }
 
 const EventHandler = new EventHandle(events)

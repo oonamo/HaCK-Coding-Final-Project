@@ -5,6 +5,7 @@ import LuckyDie from './components/upgrades/lucky_die';
 import Pointer from './components/upgrades/pointer';
 import AutoClicker from './components/upgrades/autoclicker';
 
+import Message from './components/message';
 import EventHandler from './events';
 
 import './App.css';
@@ -40,6 +41,8 @@ function App() {
       <div className="game-canvas">
         <div className="info-area">
           <p className="money">{"Money: $" + money}</p>
+          <Message className="item-box" track="item" key={"item"} />
+          <Message className="gain-box" track="cookie" key={"cookie"} />
           <div className="upgrade-bar">
             <Pointer money={money} onPurchase={onItemPurchase} />
             <AutoClicker money={money} onPurchase={onItemPurchase} />

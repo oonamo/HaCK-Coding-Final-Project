@@ -37,8 +37,15 @@ export function Cookie({ scaling }) {
     console.log("clicks change")
     EventHandler.subscribe("click", "cookie-click", (event, emitter, gain) => {
       let procGain = Proc.proc()
+
+      EventHandler.emit("message", "cookie",  {
+        color: "red",
+        message: `Did ${procGain + gain} damage!`
+      })
+
       setClicks(clicks + gain + procGain)
-      setScale(scale - 0.6 / maxClicks)
+      setScale()
+      // setScale(scale - 0.6 / maxClicks)
     })
   }, [clicks])
 

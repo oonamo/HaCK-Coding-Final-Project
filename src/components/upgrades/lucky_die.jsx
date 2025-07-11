@@ -1,6 +1,7 @@
 import ShopItem from '../shop_component';
 import { useState } from 'react';
 import Proc from '../../proccer';
+import EventHandler from '../../events'
 
 const STARTING_COST = 250;
 const GAIN = 0;
@@ -9,7 +10,13 @@ const SCALING_COST = 4.5;
 
 // returns a random number from 1-6
 function rollDie(_) {
-  return Math.floor(Math.random() * 6) + 1
+  const roll = Math.floor(Math.random() * 6) + 1
+  EventHandler.emit("message", "item", {
+    message: `Lucky Die rolled a ${roll}`,
+    color: "blue"
+  })
+
+  return roll
 }
 
 export default function Pointer({ money, onPurchase }) {
