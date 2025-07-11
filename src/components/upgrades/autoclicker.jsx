@@ -1,6 +1,7 @@
 import ShopItem from '../shop_component';
 import { useState, useEffect } from 'react';
 import EventHandler from '../../events';
+import AutoClickerImage from '../../autoclicker_pic.png'
 
 const STARTING_COST = 100;
 const GAIN = 1;
@@ -52,9 +53,10 @@ export default function AutoClicker({ money, onPurchase }) {
     <ShopItem
       name="autoclicker"
       cost={cost}
-      description="Clicks for you automatically, combines with extra clicks"
+      description="Clicks for you every second. (Stackable)"
       bought={amount}
       attemptPurchase={onClick}
+      image={AutoClickerImage}
     />
   )
 }
