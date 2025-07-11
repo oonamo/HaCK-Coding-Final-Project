@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 
 import Proc from '../../proccer';
 
+import PointerImage from '../../pointer_picture.png'
+
 const STARTING_COST = 5;
 const GAIN = 1;
 const SCALING_COST = 0.8;
@@ -26,9 +28,10 @@ export default function Pointer({ money, onPurchase }) {
     <ShopItem
       name="pointer"
       cost={cost}
-      description="counts as an extra click"
+      description="Counts as an extra click."
       bought={amount}
       attemptPurchase={onClick}
+      image={PointerImage}
     />
   )
 }
