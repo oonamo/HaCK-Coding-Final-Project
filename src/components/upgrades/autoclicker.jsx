@@ -23,8 +23,12 @@ export default function AutoClicker({ money, onPurchase }) {
       setCost(Math.floor(cost * (1 + SCALING_COST)))
 
       // Cuts the speed of interval to 3/4 previous
-      setIntervalTime(prev => Math.floor(prev*0.75))
+      setIntervalTime(prev => Math.floor(prev * 0.75))
     }
+  }
+
+  function getIntervalTimeSeconds() {
+    return (interval / 1000).toFixed(2)
   }
 
   function doAutoClick() {
@@ -49,11 +53,19 @@ export default function AutoClicker({ money, onPurchase }) {
     }
   }, [amount, interval])
 
+  function getDescription() {
+    if (amount === 0) {
+      return  "Clicks for you every second. (Stackable)"
+    }
+
+    return `Clicks for you every ${getIntervalTimeSeconds()} seconds.  (Stackable)`
+  }
+
   return (
     <ShopItem
       name="autoclicker"
       cost={cost}
-      description="Clicks for you every second. (Stackable)"
+      description={getDescription()}
       bought={amount}
       attemptPurchase={onClick}
       image={AutoClickerImage}
