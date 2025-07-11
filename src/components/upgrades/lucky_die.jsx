@@ -1,11 +1,11 @@
 import ShopItem from '../shop_component';
 import { useState } from 'react';
+import Proc from '../../proccer';
 
 const STARTING_COST = 250;
 const GAIN = 0;
 const SCALING_COST = 4.5;
 
-import Proc from '../../proccer';
 
 // returns a random number from 1-6
 function rollDie(_) {
