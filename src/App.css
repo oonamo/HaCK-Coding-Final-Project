@@ -61,8 +61,8 @@ body, html {
 .avg-gain {
   font-size: 16px;
   font-weight: bold;
-  color: #4caf50;
-  background: #eaffea;
+  color: hsl(0 100% 28%);
+  background: hsl(0 100% 93.6%);
   padding: 10px 15px;
   border-radius: 8px;
   width: fit-content;
