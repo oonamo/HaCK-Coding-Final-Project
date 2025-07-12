@@ -38,6 +38,11 @@ export function Bruin({ scaling }) {
     EventHandler.subscribe("click", "bruin-click", (event, emitter, gain) => {
       let totalGain = Proc.proc() + gain;
       setClicks(clicks + totalGain)
+
+      EventHandler.emit("message", "cookie", {
+        message: `Did ${totalGain} damage.`,
+        color: "red"
+      })
       setScale(scale - (0.6 * totalGain) / maxClicks);
     })
   }, [clicks])
