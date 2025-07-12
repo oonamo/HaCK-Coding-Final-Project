@@ -21,7 +21,6 @@ export default function Message({ track, className }) {
         || lastMessage.message == messageData.message)
     ) {
       updatedMessage = true
-      console.log("updated message...")
       messageData.raw = messageData.message
       messageData.count = lastMessage.count ? lastMessage.count + 1 : 2
       messageData.message = `${messageData.message} x${messageData.count}`
@@ -34,8 +33,6 @@ export default function Message({ track, className }) {
     setLastMessage(messageData)
     setMessage(messageData)
   }
-
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -63,9 +60,9 @@ export default function Message({ track, className }) {
   return (
     <div className={className}>
       {message.message ?
-        <li>
+        <span className={message.color}>
           {message.message}
-        </li>
+        </span>
         : ""}
     </div>
   )
