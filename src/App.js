@@ -13,6 +13,18 @@ import './App.css';
 function App() {
   const [money, setMoney] = useState(0)
 
+  const [averageGain, setAverageGain] = useState(0);
+
+  useEffect(() => {
+    EventHandler.subscribe("message", "bruin-stat-tracker", (event, emitter, messageData) => {
+      if (emitter === "bruin-stats") {
+        if (typeof messageData.message == "number" && !isNaN(messageData.message)) {
+          setAverageGain(messageData.message.toFixed(2))
+        }
+      }
+    })
+  }, [averageGain])
+
 
   // Scaling for the amount of clicks needed to destroy a bruin
   function clickScaleFunc(maxClicks) {
@@ -41,8 +53,9 @@ function App() {
       <div className="game-canvas">
         <div className="info-area">
           <p className="money">{"Money: $" + money}</p>
-          <Message className="item-box" track="item" key={"item"} />
-          <Message className="gain-box" track="cookie" key={"cookie"} />
+          <p className="avg-gain">{"Average Damage: " + averageGain}</p>
+          <Message className="item-box" track="item" />
+          <Message className="gain-box" track="bruin" />
           <div className="upgrade-bar">
             <Pointer money={money} onPurchase={onItemPurchase} />
             <AutoClicker money={money} onPurchase={onItemPurchase} />

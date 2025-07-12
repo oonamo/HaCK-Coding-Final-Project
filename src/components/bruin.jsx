@@ -13,6 +13,23 @@ export function Bruin({ scaling }) {
   const [scale, setScale] = useState(1);
   const [bruinsDestroyed, setBruinsDestroyed] = useState(0);
 
+  const [averageGain, setAverageGain] = useState(0);
+  const [totalGain, setTotalGain] = useState(0);
+  const [timesClicked, setTimesClicked] = useState(0);
+
+  function calcAverageGain(gain) {
+    setTotalGain(totalGain + gain)
+    setTimesClicked(timesClicked + 1)
+
+    setAverageGain(totalGain / timesClicked)
+  }
+
+
+  useEffect(() => {
+    EventHandler.emit("message", "bruin-stats", {
+      message: averageGain,
+    })
+  }, [averageGain])
 
   function transformImage() {
     const image = document.querySelector(".bruin")
@@ -37,9 +54,10 @@ export function Bruin({ scaling }) {
     console.log("clicks change")
     EventHandler.subscribe("click", "bruin-click", (event, emitter, gain) => {
       let totalGain = Proc.proc() + gain;
+      calcAverageGain(totalGain)
       setClicks(clicks + totalGain)
 
-      EventHandler.emit("message", "cookie", {
+      EventHandler.emit("message", "bruin", {
         message: `Did ${totalGain} damage.`,
         color: "red"
       })
