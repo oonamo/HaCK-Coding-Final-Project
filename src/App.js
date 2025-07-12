@@ -55,7 +55,7 @@ function App() {
           <p className="money">{"Money: $" + money}</p>
           <p className="avg-gain">{"Average Damage: " + averageGain}</p>
           <Message className="item-box" track="item" />
-          <Message className="gain-box" track="bruin" />
+
           <div className="upgrade-bar">
             <Pointer money={money} onPurchase={onItemPurchase} />
             <AutoClicker money={money} onPurchase={onItemPurchase} />
@@ -66,6 +66,7 @@ function App() {
         <div className="bruin-area">
           <Bruin
             scaling={clickScaleFunc} />
+            <Message className="gain-box" track="bruin" />
         </div>
       </div>
     </div>

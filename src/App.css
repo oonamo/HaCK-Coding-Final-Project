@@ -196,3 +196,18 @@ body, html {
 .item-buy-button:hover {
   background-color: #218838;
 } 
+
+
+.gain-box {
+  color: red;
+  position: absolute;
+  bottom: 70px; 
+  left: 65%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}

@@ -58,7 +58,7 @@ export function Bruin({ scaling }) {
       setClicks(clicks + totalGain)
 
       EventHandler.emit("message", "bruin", {
-        message: `Did ${totalGain} damage.`,
+        message: `-${totalGain}`,
         color: "red"
       })
       setScale(scale - (0.6 * totalGain) / maxClicks);
