@@ -1,4 +1,4 @@
-# Cookie Clicker Thing
+# Bruin Basher
 
 ```
 git clone https://github.com/oonamo/HaCK-Coding-Final-Project.git
